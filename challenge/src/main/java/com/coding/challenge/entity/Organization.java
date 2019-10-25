@@ -1,5 +1,9 @@
 package com.coding.challenge.entity;
 
+import com.coding.challenge.payload.OrganizationRequest;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,6 +26,7 @@ public class Organization {
     @Column(name="Phone")
     private String phone;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_organization",
                 joinColumns = @JoinColumn(name="OrganizationID"),
@@ -29,6 +34,14 @@ public class Organization {
     private Set<User> users = new HashSet<>();
 
     public Organization() {}
+
+    public Organization( OrganizationRequest organizationRequest ) {
+
+        this.name = organizationRequest.getName();
+        this.address = organizationRequest.getAddress();
+        this.phone = organizationRequest.getPhone();
+
+    }
 
     public int getOrganizationID() {
         return organizationID;
