@@ -34,6 +34,8 @@ public class OrganizationServiceImpl implements OrganizationService {
 
     @Override
     public List<Organization> getOrganizationsByUser(int id) {
+
         return organizationRepository.fetchOrganizationsByUser(id);
+
     }
 }

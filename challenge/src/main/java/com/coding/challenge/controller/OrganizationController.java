@@ -38,7 +38,7 @@ public class OrganizationController {
     }
 
     @GetMapping(value="/organizations", produces={"application/json"})
-    public ResponseEntity<List<Organization>> getAllOrganization() {
+    public ResponseEntity<List<Organization>> getAllOrganizations() {
 
         List<Organization> organizations = organizationService.getAllOrganizations();
 

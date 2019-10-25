@@ -1,5 +1,6 @@
 package com.coding.challenge.entity;
 
+import com.coding.challenge.payload.UserRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -38,6 +39,16 @@ public class User {
     private Set<Organization> organizations = new HashSet<>();
 
     public User() {}
+
+    public User(UserRequest userRequest) {
+
+        this.firstName = userRequest.getFirstName();
+        this.lastName = userRequest.getLastName();
+        this.email = userRequest.getEmail();
+        this.address = userRequest.getAddress();
+        this.phone = userRequest.getPhone();
+
+    }
 
     public int getUserID() {
         return userID;
