@@ -1,0 +1,22 @@
+<configuration>
+
+    <contextName>Navigator Service</contextName>
+
+    <jmxConfigurator />
+
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+    <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
+
+    <property name="common.mdc.value" value="%mdc{chain-id}:%mdc{person-id}:%mdc{customerId}" />
+
+    <appender name="appender-stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%clr(%date{yyyy-MM-dd@HH:mm:ss.SSS}){faint}|${common.mdc.value}|%marker|%clr(%5p) %clr([%15.15t{14}]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wex</Pattern>
+        </encoder>
+    </appender>
+
+    <root>
+        <level value="DEBUG" />
+        <appender-ref ref="appender-stdout" />
+    </root>
+</configuration>

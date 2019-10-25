@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -46,8 +47,8 @@ public class OrganizationController {
 
     }
 
-    @GetMapping(value="/organizations/user", produces={"application/json"})
-    public ResponseEntity<List<Organization>> getOrganizationsByUser( @RequestHeader("userID") int organizationId ) {
+    @GetMapping(value="/organization/user/{userID}", produces={"application/json"})
+    public ResponseEntity<List<Organization>> getOrganizationsByUser( @PathVariable("userID") int organizationId ) {
 
         List<Organization> organizations = organizationService.getOrganizationsByUser(organizationId);
 
@@ -57,8 +58,7 @@ public class OrganizationController {
 
     @PostMapping("/organization")
     public ResponseEntity<?> createOrganization( @RequestBody OrganizationRequest organizationRequest ) {
-
-        logger.info(organizationRequest.toString());
+        
         Organization organization = new Organization( organizationRequest );
 
         organizationService.addOrganization(organization);

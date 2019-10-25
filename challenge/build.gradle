@@ -16,6 +16,7 @@ configurations {
 
 bootRun {
 	systemProperties = System.properties
+	systemProperty('logging.config', "./src/main/resources/logback-local.xml")
 }
 
 repositories {

@@ -27,7 +27,7 @@ public class Organization {
     private String phone;
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_organization",
                 joinColumns = @JoinColumn(name="OrganizationID"),
                 inverseJoinColumns = @JoinColumn(name="UserID") )
