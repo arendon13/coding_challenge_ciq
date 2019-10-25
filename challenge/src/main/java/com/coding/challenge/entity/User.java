@@ -47,6 +47,7 @@ public class User {
         this.email = userRequest.getEmail();
         this.address = userRequest.getAddress();
         this.phone = userRequest.getPhone();
+        this.userID = -1; // for logging purposes
 
     }
 
@@ -100,5 +101,17 @@ public class User {
 
     public Set<Organization> getOrganizations() {
         return organizations;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID=" + userID +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }

@@ -40,6 +40,7 @@ public class Organization {
         this.name = organizationRequest.getName();
         this.address = organizationRequest.getAddress();
         this.phone = organizationRequest.getPhone();
+        this.organizationID = -1; // for logging purposes
 
     }
 
@@ -77,5 +78,15 @@ public class Organization {
 
     public Set<User> getUsers() {
         return users;
+    }
+
+    @Override
+    public String toString() {
+        return "Organization{" +
+                "organizationID=" + organizationID +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }

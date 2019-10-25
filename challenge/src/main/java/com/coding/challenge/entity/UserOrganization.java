@@ -39,4 +39,12 @@ public class UserOrganization implements Serializable {
     public int getOrganizationID() {
         return organizationID;
     }
+
+    @Override
+    public String toString() {
+        return "UserOrganization{" +
+                "userID=" + userID +
+                ", organizationID=" + organizationID +
+                '}';
+    }
 }

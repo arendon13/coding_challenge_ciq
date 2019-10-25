@@ -43,14 +43,18 @@ public class OrganizationController {
 
         List<Organization> organizations = organizationService.getAllOrganizations();
 
+        logger.trace("Organization count: " + organizations.size());
+
         return new ResponseEntity<>(organizations, HttpStatus.OK);
 
     }
 
     @GetMapping(value="/organization/user/{userID}", produces={"application/json"})
-    public ResponseEntity<List<Organization>> getOrganizationsByUser( @PathVariable("userID") int organizationId ) {
+    public ResponseEntity<List<Organization>> getOrganizationsByUser( @PathVariable("userID") int userID ) {
 
-        List<Organization> organizations = organizationService.getOrganizationsByUser(organizationId);
+        List<Organization> organizations = organizationService.getOrganizationsByUser(userID);
+
+        logger.trace("Organization by user (id=" + userID + ") count: " + organizations.size());
 
         return new ResponseEntity<>(organizations, HttpStatus.OK);
 
@@ -58,8 +62,10 @@ public class OrganizationController {
 
     @PostMapping("/organization")
     public ResponseEntity<?> createOrganization( @RequestBody OrganizationRequest organizationRequest ) {
-        
+
         Organization organization = new Organization( organizationRequest );
+
+        logger.trace("Organization to be created: " + organization.toString());
 
         organizationService.addOrganization(organization);
 
