@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  db:
+    image: datajoint/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+    command: --init-file /data/application/challenge.sql
+    volumes:
+      - ./challenge.sql:/data/application/challenge.sql
